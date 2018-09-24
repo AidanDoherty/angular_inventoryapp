@@ -6,18 +6,38 @@ import { load } from '@angular/core/src/render3/instructions';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
 export class ProductListComponent 
 implements OnInit  {
-
+ constructor(){
+ this.filteredProducts = this.products;
+    }
 pageTitle:string = "Aidans Stuff for sale";
 imageWidth:number = 50;
 imageMargin:number = 2;
 showImage:boolean = true;
-listFilter:string = "";
+//listFilter:string = "";
+
+_listFiler : string;
+get listFilter():string{
+    return this._listFiler
+}
+set listFilter(value : string){
+     this._listFiler = value
+     this.filteredProducts = this.listFilter ? this.preformFilter(this.listFilter) : this.products;
+}
+
+preformFilter(filterBy:string): IProduct[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product:IProduct )=>
+    product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+}
+
 
 ngOnInit(): void{
     console.log('In OnInit')
 }
+filteredProducts: IProduct[];
 products: IProduct[] = [
   {
     "productId": 1,
@@ -76,6 +96,7 @@ console.log('boom')
 }
 }
  
+
 
 
 export interface IProduct{
