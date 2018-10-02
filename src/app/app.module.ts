@@ -8,7 +8,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { StarRatingComponent } from './shared/star-rating/star-rating.component';
 import { FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faStar} from '@fortawesome/free-solid-svg-icons'
+import {faStar} from '@fortawesome/free-solid-svg-icons';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AddProductComponent } from './add-product/add-product.component'
 
 library.add(faStar);
 //import { ConvertToSpaces } from './convert-to-space.pipe';
@@ -18,7 +20,9 @@ library.add(faStar);
   declarations: [
     AppComponent,
     ProductListComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    NavBarComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
