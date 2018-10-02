@@ -9,8 +9,9 @@ import { StarRatingComponent } from './shared/star-rating/star-rating.component'
 import { FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faStar} from '@fortawesome/free-solid-svg-icons';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { AddProductComponent } from './add-product/add-product.component'
+import { NavBarComponent } from './nav-bar/nav-bar.component'
+import { RouterModule, Routes } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 
 library.add(faStar);
 //import { ConvertToSpaces } from './convert-to-space.pipe';
@@ -20,9 +21,9 @@ library.add(faStar);
   declarations: [
     AppComponent,
     ProductListComponent,
+    AddProductComponent,
     StarRatingComponent,
-    NavBarComponent,
-    AddProductComponent
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,12 @@ library.add(faStar);
     HttpModule,
     FontAwesomeModule,
     //ConvertToSpaces
+    RouterModule.forRoot([
+      { path: 'productlist', component: ProductListComponent },
+      { path: 'newproduct', component: AddProductComponent }
+    ])
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })
