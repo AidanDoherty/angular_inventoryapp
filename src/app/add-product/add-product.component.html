@@ -1,4 +1,83 @@
 <app-nav-bar></app-nav-bar>
-<p>
-  add-product works!
-</p>
+
+<div class="test">
+<div class="container">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="well well-sm">
+<form class="form-horizontal" role="form">
+
+<div class="form-group">
+<div class="col-md-8">
+<label for="productId">Product ID</label>
+<ul  class="form-control">          <input type="text" [(ngModel)]="productId" name="productId" placeholder="Product I.D.." ></ul>
+</div>
+</div>
+
+
+<label for="productName">Product Name</label>
+<div class="form-group">
+    <div class="col-md-8">
+<ul class="form-control">        <input type="text" [(ngModel)]="productName" name="productName" placeholder="Product Name.."></ul>
+</div>
+</div>
+
+
+
+<label for="productCode">Product Code</label>
+<div class="form-group">
+    <div class="col-md-8">
+<ul class="form-control"> <input type="text" [(ngModel)]="productCode" name="prodproductCodeuctId" placeholder="Product Code.."></ul>
+</div>
+</div>
+
+
+
+<label for="description">Description</label>
+<div class="form-group">
+    <div class="col-md-8">
+<ul class="form-control">              <input type="text" [(ngModel)]="description" name="description" placeholder="Description.."></ul>
+</div>
+</div>
+
+
+
+<label for="Price">Price</label>
+<div class="form-group">
+    <div class="col-md-8">
+<ul class="form-control">         <input type="text" [(ngModel)]="price" name="price" placeholder="Price.."></ul>
+</div>
+</div>
+
+
+
+
+<label for="starRating">Star Rating</label>
+<div class="form-group">
+    <div class="col-md-8">
+<ul class="form-control"> <input type="text" [(ngModel)]="starRating" name="starRating" placeholder="Sta Rating...."></ul>
+</div>
+</div>
+
+
+
+<label for="imageUrl">Product Image URL</label>
+<div class="form-group">
+    <div class="col-md-8">
+<ul class="form-control"> <input type="text" [(ngModel)]="imageUrl" name="imageUrl" placeholder="Image Url...."></ul>
+</div>
+</div>
+
+
+<div class="form-group">
+<div class="col-md-12 text-center">
+<button type="submit"  class="btn btn-primary btn-lg" value="Add Product" (click)="addProduct()"> Add Products </button>
+</div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
