@@ -1,64 +1,55 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from '../product-list/product-list.component';
-
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { IProduct } from './IProduct';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 @Injectable()
 
 export class ProductService {
 
-  constructor() { }
 
-  getProducts():IProduct[]{
-    return[
-      {
-        "productId": 1,
-        "productName": "Leaf Rake",
-        "productCode": "GDN-0011",
-        "releaseDate": "March 19, 2016",
-        "description": "Leaf rake with 48-inch wooden handle.",
-        "price": 19.95,
-        "starRating": 3.2,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
-    },
-    {
-        "productId": 2,
-        "productName": "Garden Cart",
-        "productCode": "GDN-0023",
-        "releaseDate": "March 18, 2016",
-        "description": "15 gallon capacity rolling garden cart",
-        "price": 32.99,
-        "starRating": 4.2,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
-    },
-    {
-        "productId": 5,
-        "productName": "Hammer",
-        "productCode": "TBX-0048",
-        "releaseDate": "May 21, 2016",
-        "description": "Curved claw steel hammer",
-        "price": 8.9,
-        "starRating": 4.8,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
-    },
-    {
-        "productId": 8,
-        "productName": "Saw",
-        "productCode": "TBX-0022",
-        "releaseDate": "May 15, 2016",
-        "description": "15-inch steel blade hand saw",
-        "price": 11.55,
-        "starRating": 3.7,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
-    },
-    {
-        "productId": 10,
-        "productName": "Video Game Controller",
-        "productCode": "GMG-0042",
-        "releaseDate": "October 15, 2015",
-        "description": "Standard two-button video game controller",
-        "price": 35.95,
-        "starRating": 4.6,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
-    }
-    ];
+    private _productUrl = 'http://localhost:3000/products';
+
+    productsCollection: AngularFirestoreCollection<IProduct>;
+
+    products: Observable<IProduct[]>;
+
+    allProducts: IProduct[];
+    errorMessage: string;
+
+  constructor(private _http: HttpClient, private _afs: AngularFirestore) {
+       this.productsCollection = _afs.collection<IProduct>('products');
+       
   }
-}
+
+  getProducts(): Observable<IProduct[]> {
+      
+          this.products = this.productsCollection.snapshotChanges().pipe(
+              map(actions=> actions.map(a => {
+                  const data = a.payload.doc.data() as IProduct;
+                  const id = a.payload.doc.id;
+                  return { id, ...data};
+              }))
+          );
+      return this.products;
+  }
+  addProduct(product: IProduct): void {
+      this.productsCollection.add(product);
+  }
+
+  deleteProduct(id:string): void
+  {
+this.productsCollection.doc(id).delete()
+.catch(error => {console.log("delete product error" + error); })
+.then(() => console.log('deleteProduct: id =' + id));
+  }
+ 
+      
+
+  }
+      
+
+
+

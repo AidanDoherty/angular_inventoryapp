@@ -1,83 +1,76 @@
-<app-nav-bar></app-nav-bar>
-
 <div class="test">
-<div class="container">
-    <div class="row">
-    <div class="col-md-12">
-    <div class="well well-sm">
-<form class="form-horizontal" role="form">
-
-<div class="form-group">
-<div class="col-md-8">
-<label for="productId">Product ID</label>
-<ul  class="form-control">          <input type="text" [(ngModel)]="productId" name="productId" placeholder="Product I.D.." ></ul>
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <form class="form-horizontal" role="form">
 
 
-<label for="productName">Product Name</label>
-<div class="form-group">
-    <div class="col-md-8">
-<ul class="form-control">        <input type="text" [(ngModel)]="productName" name="productName" placeholder="Product Name.."></ul>
-</div>
-</div>
-
-
-
-<label for="productCode">Product Code</label>
-<div class="form-group">
-    <div class="col-md-8">
-<ul class="form-control"> <input type="text" [(ngModel)]="productCode" name="prodproductCodeuctId" placeholder="Product Code.."></ul>
-</div>
-</div>
-
-
-
-<label for="description">Description</label>
-<div class="form-group">
-    <div class="col-md-8">
-<ul class="form-control">              <input type="text" [(ngModel)]="description" name="description" placeholder="Description.."></ul>
-</div>
-</div>
-
-
-
-<label for="Price">Price</label>
-<div class="form-group">
-    <div class="col-md-8">
-<ul class="form-control">         <input type="text" [(ngModel)]="price" name="price" placeholder="Price.."></ul>
-</div>
-</div>
+                        <label for="productId">Product ID</label>
+                        <ul> <input type="text" [(ngModel)]="productId" name="productId" placeholder="Product I.D.."></ul>
 
 
 
 
-<label for="starRating">Star Rating</label>
-<div class="form-group">
-    <div class="col-md-8">
-<ul class="form-control"> <input type="text" [(ngModel)]="starRating" name="starRating" placeholder="Sta Rating...."></ul>
-</div>
-</div>
+                        <label for="productName">Product Name</label>
+                        <ul><input type="text" [(ngModel)]="productName" name="productName" placeholder="Product Name.."></ul>
 
 
 
-<label for="imageUrl">Product Image URL</label>
-<div class="form-group">
-    <div class="col-md-8">
-<ul class="form-control"> <input type="text" [(ngModel)]="imageUrl" name="imageUrl" placeholder="Image Url...."></ul>
-</div>
-</div>
 
 
-<div class="form-group">
-<div class="col-md-12 text-center">
-<button type="submit"  class="btn btn-primary btn-lg" value="Add Product" (click)="addProduct()"> Add Products </button>
-</div>
-</div>
+                        <label for="productCode">Product Code</label>
 
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
+                        <ul> <input type="text" [(ngModel)]="productCode" name="prodproductCodeuctId" placeholder="Product Code.."></ul>
+
+
+
+
+                        <label for="description">Description</label>
+
+                        <ul> <input type="text" [(ngModel)]="description" name="description" placeholder="Description.."></ul>
+
+
+
+
+                        <label for="Price">Price</label>
+
+                        <ul> <input type="text" [(ngModel)]="price" name="price" placeholder="Price.."></ul>
+
+
+
+
+
+                        <label for="starRating">Star Rating</label>
+
+
+                        <ul> <input type="text" [(ngModel)]="starRating" name="starRating" placeholder="Sta Rating...."></ul>
+
+
+                        <label for="starRating">Release Date</label>
+
+                        <ul> <input type="text" [(ngModel)]="releaseDate" name="starRating" placeholder="Sta Rating...."></ul>
+
+
+                        <div class="form-group" fxLayout="row" fxLayoutGap="20px">
+                            <input fxflex="60" type="text" class="form-control" id="imageStr" name="imageStr"
+                                placeholder="Enter Image string" [(ngModel)]='imageStr'>
+                            <button fxFlex="20" mat-raised-button color="primary" type="submit" (click)="showHideDisplayClipartComponent()">Find
+                                Images</button>
+                        </div>
+                        <div class="form-group">
+                            <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)" *ngIf='showDisplayClipartComponent'
+                                [imageStr]="imageStr"></app-display-clipart>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="imageurl" name="imageUrl" placeholder="Enter Image URL"
+                                [(ngModel)]='imageUrl'>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" value="Add Product" (click)="addProduct()">
+                            Add Products </button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>

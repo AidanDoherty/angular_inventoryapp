@@ -1,12 +1,29 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
 
 
 
-    <ul class="nav navbar-nav">
-      <li class="nav-item active"> <a [routerLink]="['/productlist']"> Product List</a> </li>
-      <li class="nav-item active"> <a [routerLink]="['/newproduct']"> Add Product</a> </li>
-
-     </ul>
-     </div>
-</nav>
+    <mat-toolbar color="primary">
+      <button mat-button routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/productlist"> Home </button>
+      <button mat-button routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/product-list"> List </button>
+      <button mat-button routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/add-product"> Add Product</button>
+      
+      <span style="flex:1 1 auto"></span>
+      <button mat-button routerLinkActive="active" *ngIf="!isLoggedIn" routerLink="/login"> Login</button>
+      <button mat-button routerLinkActive="active" *ngIf="isLoggedIn" (click)=OnLogout()> Logout</button>
+     
+     <!-- <li>   -->
+          <!-- <div *ngIf="AfService.user | async as user">
+           <li> <p>Hello there!, {{user.displayName}}</p> 
+              
+            <div class="dropdown-content">
+              
+                <a  class="newtest" (click)="login()"> Login</a> 
+                <a class="newtest" (click)="logout()"> Log Out</a> 
+            </div>
+            </li>
+            <li><img  [src]="user.photoURL" alt="Avatar">
+            </li>
+           
+          </div> -->
+      
+      </mat-toolbar>
+ 

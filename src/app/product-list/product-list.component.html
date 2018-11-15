@@ -1,4 +1,3 @@
-<app-nav-bar></app-nav-bar>
 <div class='panel panel-primary'>
     <div class='panel-heading'>
         {{pageTitle}}
@@ -41,7 +40,11 @@
                         <td>{{product.productCode | lowercase}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency: 'EUR' :true: '1.2-2'}}</td>
-                        <td><app-star-rating [rating]='product.starRating'></app-star-rating></td>
+                        <td>
+                            <app-star-rating [rating]='product.starRating'></app-star-rating>
+                        </td>
+                        <td><button id="remove" class="btn" (click)="deleteProduct(product.id)">
+                                <i class="fa fa-trash"> Trash</i></button> </td>
                     </tr>
                 </tbody>
             </table>

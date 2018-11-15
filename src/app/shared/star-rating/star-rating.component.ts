@@ -6,15 +6,14 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
   styleUrls: ['./star-rating.component.css']
 })
 export class StarRatingComponent implements OnChanges {
-  
 
-  @Input() rating:number;
+  @Input() rating: number;
   starWidth: number;
   constructor() { }
 
   public ngOnChanges(): void {
-    this.starWidth =this.rating * 80 / 5;
-    console.log(this.starWidth)
+    this.starWidth = this.rating * 80 / 5;
+    console.log(this.starWidth);
   }
 
 }
